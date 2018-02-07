@@ -57,7 +57,7 @@ class MenuController
             elsif input == 'y' then
               system "clear"
               main_menu
-            end    
+            end
           else
             system "clear"
             puts "Entry #{val.to_i} does not exist."
