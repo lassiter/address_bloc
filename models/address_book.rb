@@ -61,13 +61,12 @@ class AddressBook
     return nil
   end
   def iterative_search(name)
-    lower = 0
-    upper = entries.length - 1
-    while lower <= upper
-      if name
-        return entries[lower]
+    i = 0
+    while i <= (entries.length - 1)
+      if entries[i].name == name
+        return entries[i]
       else
-        lower = lower + 1
+        i += 1
       end
     end
     return nil
