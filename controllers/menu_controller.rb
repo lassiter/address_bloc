@@ -14,7 +14,8 @@ class MenuController
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "5 - View Entry Number n"
+    puts "6 - Exit"
     print "Enter your selection: "
 
     # #3
@@ -38,6 +39,35 @@ class MenuController
         read_csv
         main_menu
       when 5
+        system "clear"
+        puts "Enter Number"
+        val = gets
+        if val.match(/^[0-9]*$/) ? true : false
+          system "clear"
+          if address_book.entries[val.to_i]
+            puts "Displaying #{val.to_i}"
+            puts "Name: #{address_book.entries[val.to_i].name}"
+            puts "Phone Number: #{address_book.entries[val.to_i].phone_number}"
+            puts "Email: #{address_book.entries[val.to_i].email}"
+            sleep(1)
+            puts "return to main menu? (y/n) [n => exit program]"
+            input = gets.chomp
+            if input == 'n' then
+              exit
+            elsif input == 'y' then
+              system "clear"
+              main_menu
+            end    
+          else
+            system "clear"
+            puts "Entry #{val.to_i} does not exist."
+            main_menu
+          end
+        else
+          system "clear"
+          puts "Invalid Entry, Please Enter a Number"
+        end
+      when 6
         puts "Good-bye!"
         # #8
         exit(0)
